@@ -6,12 +6,6 @@
         <p><strong>E-mail: </strong>{{auth()->user()->email}}</p>
         <p><strong>ID: </strong>{{auth()->user()->id}}</p>
     </div>
-    <div class="col-sm-7 mx-auto mb-3">
-        <form id="logoutForm" action="/logout" method="post">
-            @csrf
-            <input class=" btn btn-secondary" type="submit" value="Выход">
-        </form>
-    </div>
 @endsection
 {{--
 <div class="py-12">

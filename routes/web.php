@@ -18,7 +18,11 @@ Route::get('/', function () {
     return view('pages.home');
 });
 Route::view('/profile', 'pages.profile')->middleware('auth');
+Route::view('/about', 'pages.about');
+Route::view('/shop', 'pages.shop');
+Route::view('/contact', 'pages.contact');
 Route::post('/logout', [ProfileController::class, 'logout'])->middleware('auth');
+
 
 
 Route::get('/dashboard', function () {
