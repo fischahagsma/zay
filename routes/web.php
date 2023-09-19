@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +21,17 @@ Route::get('/', function () {
 });
 Route::view('/profile', 'pages.profile')->middleware('auth');
 Route::view('/about', 'pages.about');
-Route::view('/shop', 'pages.shop');
+
+Route::get('/shop', [ProductController::class, 'showProduct']);
+Route::get('/shop/{id}', [ProductController::class, 'showSingleProduct']);
+
+Route::get('/addCart/{productId}', [CartController::class, 'addCart'])->middleware('auth');
+
 Route::view('/contact', 'pages.contact');
+
+Route::view('/addProduct', 'pages.addProduct');
+Route::post('addProduct', [ProductController::class, 'addProduct']);
+
 Route::post('/logout', [ProfileController::class, 'logout'])->middleware('auth');
 
 
